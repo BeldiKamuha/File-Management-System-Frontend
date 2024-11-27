@@ -1,8 +1,8 @@
 // src/router/index.js
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '../components/Home.vue';
-import Directory from '../components/Directory.vue';
+import HomePage from '../components/Home.vue';
+import DirectoryView from '../components/Directory.vue';
 import FileDetails from '../components/FileDetails.vue';
 
 Vue.use(Router);

@@ -52,7 +52,7 @@
   import FileUpload from './FileUpload.vue';
   
   export default {
-    name: 'Home',
+    name: 'HomePage',
     components: {
       DirectoryCreate,
       FileUpload,

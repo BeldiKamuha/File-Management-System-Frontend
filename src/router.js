@@ -1,17 +1,35 @@
 // src/router.js
+
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './components/Home.vue';
-import Directory from './components/Directory.vue';
+import HomePage from './components/Home.vue';
+import DirectoryView from './components/Directory.vue';
 import FileDetails from './components/FileDetails.vue';
 
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: 'history', // Optional: Use history mode for cleaner URLs
   routes: [
-    { path: '/', component: Home },
-    { path: '/directory/:id', component: Directory, props: true },
-    { path: '/file/:id', component: FileDetails, props: true },
+    {
+      path: '/',
+      name: 'Home',
+      component: HomePage,
+    },
+    {
+      path: '/directory/:id',
+      name: 'Directory',
+      component: DirectoryView,
+    },
+    {
+      path: '/file/:id',
+      name: 'FileDetails',
+      component: FileDetails,
+    },
+    // Optional: Add a catch-all route for 404 Not Found pages
+    {
+      path: '*',
+      redirect: '/',
+    },
   ],
 });
