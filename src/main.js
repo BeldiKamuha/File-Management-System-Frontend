@@ -1,20 +1,22 @@
+// src/main.js
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
-// Import Bootstrap and Bootstrap-Vue CSS files
+// Import Bootstrap and BootstrapVue CSS files
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
-// Import Bootstrap-Vue
+// Import BootstrapVue
 import BootstrapVue from 'bootstrap-vue';
 
-// Use Bootstrap-Vue
+// Use BootstrapVue
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
 new Vue({
-    router,
-    render: h => h(App),
-  }).$mount('#app');
+  router,
+  render: h => h(App),
+}).$mount('#app');
