@@ -8,17 +8,17 @@ import FileDetails from '../components/FileDetails.vue';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: 'history', // Optional: Use history mode for cleaner URLs
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: HomePage, // Updated from 'Home' to 'HomePage'
     },
     {
       path: '/directory/:id',
       name: 'Directory',
-      component: Directory,
+      component: DirectoryView, // Updated from 'Directory' to 'DirectoryView'
       props: true,
     },
     {
@@ -26,6 +26,10 @@ export default new Router({
       name: 'FileDetails',
       component: FileDetails,
       props: true,
+    },
+    {
+      path: '*',
+      redirect: '/',
     },
   ],
 });

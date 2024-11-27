@@ -18,6 +18,7 @@
           <router-link :to="`/directory/${subDirectory.id}`">{{ subDirectory.name }}</router-link>
         </b-list-group-item>
       </b-list-group>
+      <p v-if="subDirectories.length === 0">No sub-directories found.</p>
     </div>
 
     <!-- Files List -->
@@ -29,6 +30,7 @@
           <a href="#" @click.prevent="viewFileDetails(file.id)">{{ file.name }}</a>
         </b-list-group-item>
       </b-list-group>
+      <p v-if="files.length === 0">No files found in this directory.</p>
     </div>
 
     <!-- Modals -->
@@ -50,6 +52,7 @@
 
 <script>
 import axios from '../axios-instance';
+import qs from 'qs';
 import DirectoryCreate from './DirectoryCreate.vue';
 import FileUpload from './FileUpload.vue';
 
@@ -59,7 +62,7 @@ export default {
     DirectoryCreate,
     FileUpload,
   },
-  props: ['id'],
+  props: ['id'], // Ensure 'id' is listed as a prop
   data() {
     return {
       directory: {},
@@ -88,8 +91,16 @@ export default {
 
       // Fetch sub-directories
       axios
-        .get(`/api/directories/${this.id}/sub-directories`)
+        .get('/api/directories', {
+          params: {
+            parent_id: this.id,
+          },
+          paramsSerializer: (params) => {
+            return qs.stringify(params, { indices: false });
+          },
+        })
         .then((response) => {
+          console.log('Fetched Sub-Directories:', response.data); // Debugging
           this.subDirectories = response.data;
         })
         .catch((error) => {
@@ -103,8 +114,16 @@ export default {
 
       // Fetch files in the current directory
       axios
-        .get(`/api/directories/${this.id}/files`)
+        .get('/api/files', {
+          params: {
+            directory_id: this.id,
+          },
+          paramsSerializer: (params) => {
+            return qs.stringify(params, { indices: false });
+          },
+        })
         .then((response) => {
+          console.log('Fetched Files:', response.data); // Debugging
           this.files = response.data;
         })
         .catch((error) => {

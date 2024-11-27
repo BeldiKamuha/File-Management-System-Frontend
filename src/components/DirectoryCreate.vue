@@ -45,7 +45,7 @@
         }
   
         axios
-          .post('/api/directories/', {
+          .post('/api/directories', {
             name: this.directoryName,
             parent_id: this.parentId,
           })

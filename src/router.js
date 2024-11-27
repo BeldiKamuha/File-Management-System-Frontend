@@ -9,7 +9,7 @@ import FileDetails from './components/FileDetails.vue';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history', // Optional: Use history mode for cleaner URLs
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -20,13 +20,14 @@ export default new Router({
       path: '/directory/:id',
       name: 'Directory',
       component: DirectoryView,
+      props: true,
     },
     {
       path: '/file/:id',
       name: 'FileDetails',
       component: FileDetails,
+      props: true,
     },
-    // Optional: Add a catch-all route for 404 Not Found pages
     {
       path: '*',
       redirect: '/',
