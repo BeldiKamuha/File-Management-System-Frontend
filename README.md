@@ -45,6 +45,44 @@ This is the frontend system for the File Management System. The system allows us
 ## Steps
 
 ### 1. Clone the Repository
+```
+git clone https://github.com/yourusername/file-management-frontend.git
+```
+
+### 2.	Navigate to the Project Directory
+```
+cd file-management-frontend
+```
+
+### 3.	Install Dependencies
+```
+npm install
+```
+
+### 4.	Configure the API Endpoint
+• Open src/axios-instance.js and set the base URL to point to your backend API.
+```
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL: 'http://localhost:8000',
+});
+
+export default instance;
+```
+## Usage
+
+### Running the Development Server
+```
+npm run serve
+```
+• The application will be accessible at http://localhost:8080 by default.  
+
+### Building for Production
+```
+npm run build
+```
+• The production build will be placed in the dist directory
 
 ## License
 File Management System - Frontend is completely free and released under the [MIT license](https://opensource.org/licenses/MIT).
