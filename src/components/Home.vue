@@ -2,9 +2,17 @@
 <template>
   <div class="container mt-4">
     <h1 class="mb-4">Root Directory</h1>
-    <div class="mb-3">
-      <b-button variant="primary" class="mr-2" @click="showCreateDirectoryModal">Create New Directory</b-button>
-      <b-button variant="secondary" @click="showUploadFileModal">Upload File</b-button>
+
+    <!-- Action Buttons -->
+    <div class="mb-3 d-flex flex-wrap">
+      <div class="btn-group mr-2 mb-2">
+        <b-button variant="primary" @click="showCreateDirectoryModal">
+          Create New Directory
+        </b-button>
+        <b-button variant="secondary" @click="showUploadFileModal">
+          Upload File
+        </b-button>
+      </div>
     </div>
 
     <!-- Directories List -->
@@ -47,10 +55,10 @@
     />
   </div>
 </template>
-  
+
 <script>
 import axios from '../axios-instance';
-import qs from 'qs'; // Import qs for query string serialization
+import qs from 'qs';
 import DirectoryCreate from './DirectoryCreate.vue';
 import FileUpload from './FileUpload.vue';
 

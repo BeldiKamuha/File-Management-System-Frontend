@@ -2,23 +2,28 @@
 <template>
   <div class="container mt-4">
     <h1 class="mb-4">{{ directory.name }}</h1>
-    <div class="mb-3">
-      <b-button
-        variant="primary"
-        class="mr-2"
-        @click="showCreateDirectoryModal"
-      >
-        Create New Directory
-      </b-button>
-      <b-button variant="secondary" class="mr-2" @click="showUploadFileModal">
-        Upload File
-      </b-button>
-      <b-button variant="danger" class="mr-2" @click="deleteDirectory">
-        Delete Directory
-      </b-button>
-      <b-button variant="link" @click="navigateToParent">
-        Go to Parent Directory
-      </b-button>
+
+    <!-- Action Buttons -->
+    <div class="mb-3 d-flex flex-wrap align-items-center">
+      <div class="btn-group mr-2 mb-2">
+        <b-button
+          variant="primary"
+          @click="showCreateDirectoryModal"
+        >
+          Create New Directory
+        </b-button>
+        <b-button variant="secondary" @click="showUploadFileModal">
+          Upload File
+        </b-button>
+        <b-button variant="danger" @click="deleteDirectory">
+          Delete Directory
+        </b-button>
+      </div>
+      <div class="mb-2">
+        <b-button variant="link" @click="navigateToParent">
+          <i class="bi bi-arrow-up"></i> Go to Parent Directory
+        </b-button>
+      </div>
     </div>
 
     <!-- Sub-Directories List -->
@@ -120,7 +125,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log('Fetched Sub-Directories:', response.data); // Debugging
           this.subDirectories = response.data;
         })
         .catch((error) => {
@@ -143,7 +147,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log('Fetched Files:', response.data); // Debugging
           this.files = response.data;
         })
         .catch((error) => {

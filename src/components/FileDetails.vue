@@ -2,15 +2,28 @@
 <template>
   <div class="container mt-4">
     <h1 class="mb-4">{{ file.name }}</h1>
-    <p><strong>Directory ID:</strong> {{ file.directory_id || 'Root Directory' }}</p>
+    <p><strong>Directory:</strong> {{ file.directory_id || 'Root Directory' }}</p>
     <p><strong>Created At:</strong> {{ formattedCreatedAt }}</p>
     <p><strong>Updated At:</strong> {{ formattedUpdatedAt }}</p>
 
-    <div class="mb-3">
-      <b-button variant="primary" class="mr-2" @click="downloadFile">Download File</b-button>
-      <b-button variant="warning" class="mr-2" @click="showRenameModal = true">Rename File</b-button>
-      <b-button variant="danger" class="mr-2" @click="deleteFile">Delete File</b-button>
-      <b-button variant="link" @click="navigateToParent">Go to Parent Directory</b-button>
+    <!-- Action Buttons -->
+    <div class="mb-3 d-flex flex-wrap align-items-center">
+      <div class="btn-group mr-2 mb-2">
+        <b-button variant="primary" @click="downloadFile">
+          Download File
+        </b-button>
+        <b-button variant="warning" @click="showRenameModal = true">
+          Rename File
+        </b-button>
+        <b-button variant="danger" @click="deleteFile">
+          Delete File
+        </b-button>
+      </div>
+      <div class="mb-2">
+        <b-button variant="link" @click="navigateToParent">
+          <i class="bi bi-arrow-up"></i> Go to Parent Directory
+        </b-button>
+      </div>
     </div>
 
     <!-- Rename File Modal -->
@@ -33,7 +46,7 @@
 
 <script>
 import axios from '../axios-instance';
-import moment from 'moment'; // For date formatting
+import moment from 'moment';
 
 export default {
   name: 'FileDetails',
