@@ -3,19 +3,36 @@
   <div class="container mt-4">
     <h1 class="mb-4">{{ directory.name }}</h1>
     <div class="mb-3">
-      <b-button variant="primary" class="mr-2" @click="showCreateDirectoryModal">Create New Directory</b-button>
-      <b-button variant="secondary" class="mr-2" @click="showUploadFileModal">Upload File</b-button>
-      <b-button variant="danger" class="mr-2" @click="deleteDirectory">Delete Directory</b-button>
-      <b-button variant="link" @click="navigateToParent">Go to Parent Directory</b-button>
+      <b-button
+        variant="primary"
+        class="mr-2"
+        @click="showCreateDirectoryModal"
+      >
+        Create New Directory
+      </b-button>
+      <b-button variant="secondary" class="mr-2" @click="showUploadFileModal">
+        Upload File
+      </b-button>
+      <b-button variant="danger" class="mr-2" @click="deleteDirectory">
+        Delete Directory
+      </b-button>
+      <b-button variant="link" @click="navigateToParent">
+        Go to Parent Directory
+      </b-button>
     </div>
 
     <!-- Sub-Directories List -->
     <div class="mb-4">
       <h3>Sub-Directories</h3>
       <b-list-group>
-        <b-list-group-item v-for="subDirectory in subDirectories" :key="subDirectory.id">
+        <b-list-group-item
+          v-for="subDirectory in subDirectories"
+          :key="subDirectory.id"
+        >
           <i class="bi bi-folder-fill me-2"></i>
-          <router-link :to="`/directory/${subDirectory.id}`">{{ subDirectory.name }}</router-link>
+          <router-link :to="`/directory/${subDirectory.id}`">{{
+            subDirectory.name
+          }}</router-link>
         </b-list-group-item>
       </b-list-group>
       <p v-if="subDirectories.length === 0">No sub-directories found.</p>
@@ -27,7 +44,9 @@
       <b-list-group>
         <b-list-group-item v-for="file in files" :key="file.id">
           <i class="bi bi-file-earmark-fill me-2"></i>
-          <a href="#" @click.prevent="viewFileDetails(file.id)">{{ file.name }}</a>
+          <a href="#" @click.prevent="viewFileDetails(file.id)">{{
+            file.name
+          }}</a>
         </b-list-group-item>
       </b-list-group>
       <p v-if="files.length === 0">No files found in this directory.</p>
@@ -62,7 +81,7 @@ export default {
     DirectoryCreate,
     FileUpload,
   },
-  props: ['id'], // Ensure 'id' is listed as a prop
+  props: ['id'],
   data() {
     return {
       directory: {},
@@ -146,7 +165,7 @@ export default {
       this.isUploadFileModalVisible = true;
     },
     deleteDirectory() {
-      if (confirm('Are you sure you want to delete this directory and all its contents?')) {
+      if (confirm('Are you sure you want to delete this directory?')) {
         axios
           .delete(`/api/directories/${this.id}`)
           .then(() => {
@@ -160,10 +179,8 @@ export default {
           .catch((error) => {
             console.error('Error deleting directory:', error);
             const errorMessage =
-              error.response && error.response.data && error.response.data.errors
-                ? Object.values(error.response.data.errors)
-                    .flat()
-                    .join(' ')
+              error.response && error.response.data && error.response.data.error
+                ? error.response.data.error
                 : 'Failed to delete directory.';
             this.$bvToast.toast(errorMessage, {
               title: 'Error',
