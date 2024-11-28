@@ -4,7 +4,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/BeldiKamuha/File-Management-System-Frontend" alt="License"></a>
 </p>
 
-## About the Project
+## Description
 
 The File Management System Frontend is a web application built with Vue.js and BootstrapVue that allows users to interact with a file management backend system. Users can upload, download, rename, and delete files, as well as create and navigate directories in a hierarchical structure.
 
@@ -104,4 +104,4 @@ Running the Development Server
 ```
 php artisan serve
 ```
-•	The application will be accessible at http://localhost:8000
+
