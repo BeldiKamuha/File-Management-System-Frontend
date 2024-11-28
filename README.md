@@ -12,23 +12,12 @@ This project was developed as part of an interview coding challenge to demonstra
 
 ## Features
 
-•	File Management  
-•	Upload files to the current directory.  
-•	Download files.  
-•	Rename files.  
-•	Delete files.  
-•	Directory Management.    
-•	Create new directories within the current directory.  
-•	Delete directories (including all subdirectories and files).  
-•	Navigate through directories.  
-•	Navigation.  
-•	List all high-level (root) directories and files.  
-•	Click on a directory to view its contents.  
-•	Click on a file to view its details in a modal dialog.  
-•	Navigate to the parent directory from a file or directory view.  
-•	User Interface.  
-•	Built with BootstrapVue for responsive design and styling.  
-•	Toast notifications for user feedback on actions.  
-•	Modal dialogs for file uploads, directory creation, and file details.  
+•	RESTful API following REST standards.  
+•	File Management: Upload, List, download, update, and delete files.  
+•	Directory Management: Create, List, update, and delete directories.  
+•	Nested Directories: Supports nested directories in a tree structure.  
+•	Error Handling: Gracefully handles errors such as deleting non-existent files or directories that are not empty.  
+•	Local File System Storage: Files and directories are stored on the local file system.  
+•	Database Storage: Metadata stored in a MySQL database.  
 
 
