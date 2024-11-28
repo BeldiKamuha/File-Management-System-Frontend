@@ -84,6 +84,33 @@ npm run build
 ```
 • The production build will be placed in the dist directory
 
+## API Endpoints
+
+The frontend communicates with the backend using the following API endpoints:
+Files
+•	GET /api/files/ - List all files in the system.  
+•	GET /api/files/:id - Get details of a specific file.  
+•	POST /api/files/ - Upload a new file.  
+•	PUT /api/files/:id - Update a file.  
+•	DELETE /api/files/:id - Delete a file.  
+•	GET /api/files/:id/download - Download a file.  
+Directories  
+•	GET /api/directories/ - List all directories in the system.  
+•	GET /api/directories/:id/sub-directories - Get sub-directories of a directory.  
+•	GET /api/directories/:id/files - Get files in a directory.  
+•	POST /api/directories/ - Create a new directory.  
+•	PUT /api/directories/:id - Update a directory.  
+•	DELETE /api/directories/:id - Delete a directory.  
+
+## Notes
+
+### Backend Dependency: 
+Ensure the backend application is running and accessible at the configured base URL.
+### CORS Configuration: 
+The backend must allow CORS requests from the frontend origin (http://localhost:8080 by default).
+### Environment Variables: 
+If needed, you can use environment variables to configure the API base URL.
+
 ## License
 File Management System - Frontend is completely free and released under the [MIT license](https://opensource.org/licenses/MIT).
 
