@@ -50,7 +50,7 @@
   
 <script>
 import axios from '../axios-instance';
-import qs from 'qs'; // Import qs
+import qs from 'qs'; // Import qs for query string serialization
 import DirectoryCreate from './DirectoryCreate.vue';
 import FileUpload from './FileUpload.vue';
 
@@ -130,6 +130,6 @@ export default {
 };
 </script>
   
-  <style scoped>
-  /* Add any component-specific styles here */
-  </style>
+<style scoped>
+/* Add any component-specific styles here */
+</style>

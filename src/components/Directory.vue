@@ -87,6 +87,7 @@ export default {
             variant: 'danger',
             solid: true,
           });
+          this.$router.push('/');
         });
 
       // Fetch sub-directories
@@ -158,7 +159,13 @@ export default {
           })
           .catch((error) => {
             console.error('Error deleting directory:', error);
-            this.$bvToast.toast('Failed to delete directory.', {
+            const errorMessage =
+              error.response && error.response.data && error.response.data.errors
+                ? Object.values(error.response.data.errors)
+                    .flat()
+                    .join(' ')
+                : 'Failed to delete directory.';
+            this.$bvToast.toast(errorMessage, {
               title: 'Error',
               variant: 'danger',
               solid: true,

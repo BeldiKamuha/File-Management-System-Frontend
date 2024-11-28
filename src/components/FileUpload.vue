@@ -1,13 +1,20 @@
 <!-- src/components/FileUpload.vue -->
 <template>
-  <b-modal @hide="$emit('close')" title="Upload File" hide-footer>
+  <b-modal
+    id="upload-file-modal"
+    title="Upload File"
+    v-model="isModalVisible"
+    @hide="resetForm"
+    hide-footer
+    hide-header-close
+  >
     <b-form @submit.prevent="submitFile">
       <b-form-group label="File Name" label-for="file-name">
         <b-form-input
           id="file-name"
           v-model="form.name"
-          required
           placeholder="Enter file name"
+          required
         ></b-form-input>
       </b-form-group>
 
@@ -18,18 +25,20 @@
           :state="Boolean(form.file)"
           required
           placeholder="Choose a file..."
+          accept=".jpg,.png,.pdf,.docx,.txt"
         ></b-form-file>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Upload</b-button>
-      <b-button variant="secondary" @click="$emit('close')">Cancel</b-button>
+      <div class="d-flex justify-content-end">
+        <b-button type="submit" variant="primary" class="mr-2">Upload</b-button>
+        <b-button variant="secondary" @click="closeModal">Cancel</b-button>
+      </div>
     </b-form>
   </b-modal>
 </template>
 
 <script>
 import axios from '../axios-instance';
-// Removed unused 'qs' import
 
 export default {
   name: 'FileUpload',
@@ -41,10 +50,20 @@ export default {
         file: null,
         directory_id: this.directoryId || null,
       },
+      isModalVisible: true,
     };
   },
   methods: {
     submitFile() {
+      if (!this.form.file) {
+        this.$bvToast.toast('Please select a file to upload.', {
+          title: 'Error',
+          variant: 'danger',
+          solid: true,
+        });
+        return;
+      }
+
       const formData = new FormData();
       formData.append('name', this.form.name);
       formData.append('file', this.form.file);
@@ -58,15 +77,14 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(() => { // Removed 'response' parameter
+        .then(() => {
           this.$bvToast.toast('File uploaded successfully!', {
             title: 'Success',
             variant: 'success',
             solid: true,
           });
           this.$emit('fileUploaded');
-          this.form.name = '';
-          this.form.file = null;
+          this.closeModal();
         })
         .catch((error) => {
           console.error('Error uploading file:', error);
@@ -82,6 +100,15 @@ export default {
             solid: true,
           });
         });
+    },
+    resetForm() {
+      this.form.name = '';
+      this.form.file = null;
+    },
+    closeModal() {
+      this.resetForm();
+      this.isModalVisible = false;
+      this.$emit('close');
     },
   },
 };
