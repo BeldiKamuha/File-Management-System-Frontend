@@ -39,14 +39,26 @@ This is the frontend system for the File Management System. The system allows us
 
 ### Prerequisites
 
-•	Node.js (version 12 or higher)  
-•	npm (Node Package Manager)  
+#### Git  
+• Download Git from [Git Official Website](https://git-scm.com).
+#### Node.js (version 12 or higher)  
+• Get the latest Node.js version from [Node.js Official Website](https://nodejs.org/en).
+#### npm (Node Package Manager)  
+• npm is automatically installed with Node.js and is required to manage frontend dependencies.  
+• Verify npm Installation:  
+```
+npm -v
+```
+#### Vue CLI
+```
+npm install -g @vue/cli
+```
 
 ## Steps
 
 ### 1. Clone the Repository
 ```
-git clone https://github.com/yourusername/file-management-frontend.git
+git clone https://github.com/BeldiKamuha/file-management-frontend.git
 ```
 
 ### 2.	Navigate to the Project Directory
