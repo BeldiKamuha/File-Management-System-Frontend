@@ -43,4 +43,65 @@ This project was developed as part of an interview coding challenge to demonstra
 git clone https://github.com/BeldiKamuha/File-Management-System-Frontend.git
 ```
 
+### 2.	Navigate to the Project Directory
+```
+cd file-management-backend
+ ```
 
+### 3.	Install PHP Dependencies
+```
+composer install
+```
+
+### 4.	Copy the Environment File
+```
+cp .env.example .env
+```
+
+### 5.	Configure Environment Variables
+Open .env and set your application and database configurations:
+```
+APP_NAME="File Management System"
+APP_ENV=local
+APP_KEY=base64:YourGeneratedAppKey
+APP_DEBUG=true
+APP_URL=http://localhost
+
+# Database Configuration
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+
+```
+
+### 6.	Generate Application Key
+```
+php artisan key:generate
+```
+
+### 7.	Run Database Migrations
+```
+php artisan migrate
+```
+
+### 8.	Create Storage Symlink
+```
+php artisan storage:link
+```
+
+### 9.	Set Directory Permissions
+Ensure the storage and bootstrap/cache directories are writable by the web server:
+```
+chmod -R 775 storage bootstrap/cache
+```
+
+## Usage
+
+Running the Development Server
+```
+php artisan serve
+```
+•	The application will be accessible at http://localhost:8000
