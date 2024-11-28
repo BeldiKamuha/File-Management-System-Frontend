@@ -20,4 +20,27 @@ This project was developed as part of an interview coding challenge to demonstra
 •	Local File System Storage: Files and directories are stored on the local file system.  
 •	Database Storage: Metadata stored in a MySQL database.  
 
+## Technologies Used
+
+•	PHP (Laravel Framework)  
+•	MySQL Database  
+•	Composer for dependency management  
+
+## Installation
+
+### Prerequisites
+
+•	PHP (version 8.0.0 or higher) 
+•	Composer  
+•	MySQL  
+•	Web Server (Apache) 
+•	Node.js and npm (for compiling frontend assets)
+
+## Steps
+
+### 1. Clone the Repository
+```
+git clone https://github.com/BeldiKamuha/File-Management-System-Frontend.git
+```
+
 
